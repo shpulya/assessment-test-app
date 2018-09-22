@@ -1,0 +1,24 @@
+<mat-tab-group>
+  <form #f=ngForm (ngSubmit)="onSearchUsers(f)" novalidate>
+    <mat-form-field hintLabel="Should be 5-digit number.">
+      <input type="text" matInput placeholder="Zip Code" name="zipCode" ngModel #zipInput="ngModel"
+             required>
+      <mat-error *ngIf="zipInput.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <button type="submit" [disabled]="f.invalid" mat-icon-button color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">view_headline</mat-icon>
+    </ng-template>
+    <app-table-view></app-table-view>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">view_module</mat-icon>
+    </ng-template>
+    <app-card-view></app-card-view>
+  </mat-tab>
+</mat-tab-group>
