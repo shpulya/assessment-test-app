@@ -1,14 +1,15 @@
+<mat-toolbar class="user-search-toolbar">
+<form #f=ngForm (ngSubmit)="onSearchUsers(f)" novalidate>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Text search" name="userInputDataSearch" ngModel #userInputDataSearch="ngModel" required>
+    <mat-error *ngIf="userInputDataSearch.hasError('required')">Field must not be empty.</mat-error>
+  </mat-form-field>
+  <button type="submit" [disabled]="f.invalid" mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+</form>
+</mat-toolbar>
 <mat-tab-group>
-  <form #f=ngForm (ngSubmit)="onSearchUsers(f)" novalidate>
-    <mat-form-field hintLabel="Should be 5-digit number.">
-      <input type="text" matInput placeholder="Zip Code" name="zipCode" ngModel #zipInput="ngModel"
-             required>
-      <mat-error *ngIf="zipInput.hasError('required')">Field must not be empty.</mat-error>
-    </mat-form-field>
-    <button type="submit" [disabled]="f.invalid" mat-icon-button color="primary">
-      <mat-icon>search</mat-icon>
-    </button>
-  </form>
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon class="tab-icon">view_headline</mat-icon>
@@ -22,3 +23,4 @@
     <app-card-view></app-card-view>
   </mat-tab>
 </mat-tab-group>
+
