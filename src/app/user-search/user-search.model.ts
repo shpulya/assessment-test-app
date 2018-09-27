@@ -1,9 +1,9 @@
-export interface Users {
+export interface User {
   login: string;
   url: string;
 
 };
 
 export class Response {
-  items: Array <any> ;
+  items: Array <User> ;
 }

@@ -11,11 +11,7 @@
         <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
         <li *ngIf="isAuth"><a routerLink="/user-search">Search</a></li>
         <li *ngIf="isAuth"><a (click)="onLogout()">Logout</a></li>
-        <li *ngIf="isAuth">
-          <a routerLink="/user-detail">
-            <div class="avatar" [ngStyle]="{'background-image': 'url('+ userInfo.avatar_url +')' }"></div>
-          </a>
-        </li>
+        <li *ngIf="isAuth"><a routerLink="/user-detail">Profile</a></li>
       </ul>
     </div>
   </mat-toolbar>

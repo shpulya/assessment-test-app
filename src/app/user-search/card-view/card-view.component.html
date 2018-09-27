@@ -1,14 +1,8 @@
-<section class="new-training" fxLayout fxLayoutAlign="center">
-  <form  #f="ngForm">
-    <mat-card fxFlex.xs="100%" fxFlex="400px">
-      <mat-card-title fxLayoutAlign="center">Time to start a workout!</mat-card-title>
-      <mat-card-content fxLayoutAlign="center">
-
-      </mat-card-content>
-      <mat-card-actions fxLayoutAlign="center">
-        <button type="submit" mat-button [disabled]="f.invalid">Start</button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-</section>
-
+<mat-card *ngFor="let user of data | async" fxLayoutAlign="space-between center">
+  <div>
+    <img *ngIf="user.url" [src]="user.url" alt="author photo profile" [title]="user.url">
+    <span>{{user.login}}</span>
+  </div>
+  <span>{{user | json}}</span>
+  <button mat-button [routerLink]="['/user-detail']">Profile</button>
+</mat-card>
