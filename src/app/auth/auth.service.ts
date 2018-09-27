@@ -8,7 +8,8 @@ import * as firebase from 'firebase/app';
 export class AuthService {
   authChange = new Subject<boolean>();
   user: Observable<firebase.User>;
-  userDetails: firebase.User = null;
+  userDetails: any;
+  isAuth = false;
 
   constructor(private afAuth: AngularFireAuth,
               private router: Router) {
@@ -21,20 +22,46 @@ export class AuthService {
       });
     }
   }
+
+  initAuthListener() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.isAuth = true;
+        this.userDetails = user;
+        this.authChange.next(true);
+        this.router.navigate(['/user-detail'])
+      } else {
+        this.authChange.next(false);
+        this.userDetails = null;
+        this.router.navigate(['/login']);
+        this.isAuth = false;
+      }
+    });
+  }
   getProfile() {
-    return this.userDetails;
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
+      .then( responce => {
+        this.userDetails = responce.additionalUserInfo;
+        }
+      );
   }
   login() {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
-    //console.log(this.userDetails);
-    //console.log(this.isLoggedIn());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GithubAuthProvider())
+      .then((responce) => {
+        this.isAuth = true;
+        this.userDetails = responce.additionalUserInfo.username;
+        this.router.navigate(['user-detail']);
+        localStorage.setItem('auth_user_profile', JSON.stringify((<any> responce).additionalUserInfo.profile));
+      })
+      .catch((err) => console.log(err));
+
   }
   isLoggedIn() {
-    return !!this.userDetails;
+    return this.isAuth;
   }
   logout() {
     this.afAuth.auth.signOut()
-      .then((res) => this.router.navigate(['/login']))
+      .then((responce) => this.router.navigate(['/login']))
       .catch((err) => console.log(err));;
   }
 }
