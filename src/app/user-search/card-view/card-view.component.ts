@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user-search.model';
 import { UserSearchService } from '../user-search.service';
+import {UserDataSource} from '../user-data-source';
+import 'rxjs/add/observable/of';
+
 
 @Component({
   selector: 'app-card-view',
@@ -9,7 +12,7 @@ import { UserSearchService } from '../user-search.service';
   styleUrls: ['./card-view.component.scss']
 })
 export class CardViewComponent implements OnInit {
-  data: Observable<User[]>;
+  dataSource = new UserDataSource(this.userSearchService);
 
   constructor(private userSearchService: UserSearchService) { }
 
