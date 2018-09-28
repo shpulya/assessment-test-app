@@ -1,4 +1,4 @@
-<mat-card *ngFor="let user of data | async" fxLayoutAlign="space-between center">
+<mat-card *ngFor="let user of dataSource " fxLayoutAlign="space-between center">
   <div>
     <img *ngIf="user.url" [src]="user.url" alt="author photo profile" [title]="user.url">
     <span>{{user.login}}</span>
