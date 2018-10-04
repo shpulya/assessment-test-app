@@ -1,8 +1,25 @@
-<mat-card *ngFor="let user of dataSource " fxLayoutAlign="space-between center">
+<h1>Amount =   {{data}}</h1>
+
+<mat-card *ngFor="let user of dataSourceCardView " fxLayoutAlign="space-between center">
   <div>
-    <img *ngIf="user.url" [src]="user.url" alt="author photo profile" [title]="user.url">
+    <img *ngIf="user.url" [src]="user.url" [title]="user.url">
     <span>{{user.login}}</span>
   </div>
-  <span>{{user | json}}</span>
+  <!--<span>{{user | json}}</span>-->
   <button mat-button [routerLink]="['/user-detail']">Profile</button>
 </mat-card>
+
+<table mat-table [dataSource]="dataSourceItems" class="mat-elevation-z8">
+  <ng-container matColumnDef="login">
+    <th mat-header-cell *matHeaderCellDef> Login </th>
+    <td mat-cell *matCellDef="let user"> {{user.login}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="url">
+    <th mat-header-cell *matHeaderCellDef> URL </th>
+    <td mat-cell *matCellDef="let user">{{user.url}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -25,15 +25,21 @@ export class UserSearchService {
 
   getSearchUsers(InputDataSearch: string): Observable<User[]> {
     const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
+    console.log(url);
     return this.http.get<User[]>(url).pipe(map(data => {
-      let usersList = data['items'];
+      const usersList = data['items'];
       return usersList.map(function (user: any) {
         return {login: user.login, url: user.url};
       });
     }));
   }
-      // return this.http.get<User[]>(this.serviceUrl);
 
+  getSearchUsersAllData(InputDataSearch: string): Observable<Response> {
+    const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
+    console.log(url);
+    return this.http.get<Response> (url);
+  }
+      // return this.http.get<User[]>(this.serviceUrl);
       //  .subscribe(response => {
       //     this.searchInfoResult = response;
       //     this.responseSearchUsers = this.searchInfoResult.items;

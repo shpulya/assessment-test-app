@@ -14,7 +14,9 @@ export class UserDataSource extends DataSource<any> {
   }
 
   connect(): Observable<User[]> {
-    return this.userService.getSearchUsers(this.searchData);
+    //if (!!this.searchData) {
+      return this.userService.getSearchUsers(this.searchData);
+    //}
   }
 
   disconnect() {

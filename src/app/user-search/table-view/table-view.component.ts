@@ -16,13 +16,16 @@ import {UserSearchComponent} from '../user-search.component';
 })
 export class TableViewComponent implements OnInit {
   displayedColumns: string[] = ['login', 'url'];
-  dataSource = new UserDataSource(this.userSearchService);
+  @Input() searchData: string;
+
+  @Input() dataSource = new UserDataSource(this.userSearchService);
 
   constructor(private userSearchService: UserSearchService) {
-  };
+  }
 
   ngOnInit() {
     //this.userSearchService.getSearchUsers('res').subscribe((res) => {
     //  this.dataSource = new UserDataSource(res.items);
+    //this.dataSource = this.userSearchService.getSearchUsers(this.searchData);
   }
 }
