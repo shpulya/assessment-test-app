@@ -1,13 +1,7 @@
-import {Component, OnInit, Input, ErrorHandler} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import {User} from '../user-search.model';
-import {UserSearchService} from '../user-search.service';
-import {Observable} from 'rxjs/Observable';
+import {Component, OnInit, Input, ErrorHandler, ViewChild} from '@angular/core';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {Item} from '../user-search.model';
 import 'rxjs/add/observable/of';
-import {DataSource} from '@angular/cdk/collections';
-
-import {UserDataSource} from '../user-data-source';
-import {UserSearchComponent} from '../user-search.component';
 
 @Component({
   selector: 'app-table-view',
@@ -16,16 +10,12 @@ import {UserSearchComponent} from '../user-search.component';
 })
 export class TableViewComponent implements OnInit {
   displayedColumns: string[] = ['login', 'url'];
-  @Input() searchData: string;
+  @Input() dataSourceItems = new MatTableDataSource<Item>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  @Input() dataSource = new UserDataSource(this.userSearchService);
-
-  constructor(private userSearchService: UserSearchService) {
+  constructor() {
   }
 
   ngOnInit() {
-    //this.userSearchService.getSearchUsers('res').subscribe((res) => {
-    //  this.dataSource = new UserDataSource(res.items);
-    //this.dataSource = this.userSearchService.getSearchUsers(this.searchData);
   }
 }

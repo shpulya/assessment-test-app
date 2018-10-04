@@ -1,29 +1,26 @@
 <mat-toolbar class="user-search-toolbar">
-<form #f=ngForm (ngSubmit)="onSearchUsers(f)" novalidate>
-  <mat-form-field>
-    <input type="text" matInput placeholder="Text search"  name="userInputDataSearch" ngModel #userInputDataSearch="ngModel" required>
-    <mat-error *ngIf="userInputDataSearch.hasError('required')">Field must not be empty.</mat-error>
-  </mat-form-field>
-  <button type="submit" [disabled]="f.invalid" mat-icon-button>
-    <mat-icon>search</mat-icon>
-  </button>
-</form>
-  <input type="text" matInput placeholder="Enter user data"  [formControl]="searchInput">
-
-  <h1>{{data}}</h1>
+  <form #f=ngForm (ngSubmit)="onSearchUsers(f)" novalidate>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Text search"  name="userInputDataSearch" ngModel #userInputDataSearch="ngModel" required>
+      <mat-error *ngIf="userInputDataSearch.hasError('required')">Field must not be empty.</mat-error>
+    </mat-form-field>
+    <button type="submit" [disabled]="f.invalid" mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
 </mat-toolbar>
 <mat-tab-group *ngIf = "showTabs">
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon class="tab-icon">view_headline</mat-icon>
     </ng-template>
-    <app-table-view ></app-table-view>
+    <app-table-view [dataSourceItems]="dataSourceItems"></app-table-view>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon class="tab-icon">view_module</mat-icon>
     </ng-template>
-    <app-card-view [data]="data" [dataSourceCardView]="dataSourceCardView" [dataSourceItems]="dataSourceItems"></app-card-view>
+    <app-card-view [dataSourceCardView]="dataSourceCardView" ></app-card-view>
   </mat-tab>
 </mat-tab-group>
 

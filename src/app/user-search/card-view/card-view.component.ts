@@ -13,11 +13,6 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class CardViewComponent implements OnInit {
   @Input() dataSourceCardView: Item[];
-  @Input() dataSourceItems = new MatTableDataSource<Item>();
-  displayedColumns: string[] = ['login', 'url'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @Input() data: string;
-
 
   constructor(private userSearchService: UserSearchService) {
 
