@@ -8,7 +8,7 @@ import {User} from '../user-search/user-search.model';
 export class UserDetailService {
   userInfo: any;
 
-  private userInfoSource = new BehaviorSubject(localStorage.getItem('auth_user_profile'));
+  private userInfoSource = new BehaviorSubject(localStorage.getItem('auth_user_login'));
   currentUserInfo = this.userInfoSource.asObservable();
 
   constructor(private userSearchService: UserSearchService) {

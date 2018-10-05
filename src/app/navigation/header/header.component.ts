@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   setUserInfo() {
-    this.userDetailService.newUserInfo(localStorage.getItem('auth_user_profile'));
+    this.userDetailService.newUserInfo(localStorage.getItem('auth_user_login'));
   }
 
 }

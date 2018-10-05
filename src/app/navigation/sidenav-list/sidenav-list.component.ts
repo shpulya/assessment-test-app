@@ -21,7 +21,7 @@ export class SidenavListComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     });
-    this.userInfo = JSON.parse(localStorage.getItem('auth_user_profile'));
+    this.userInfo = JSON.parse(localStorage.getItem('auth_user_login'));
   }
 
   onClose() {
@@ -38,6 +38,7 @@ export class SidenavListComponent implements OnInit, OnDestroy {
   }
 
   setUserInfo() {
-    this.userDetailService.newUserInfo(localStorage.getItem('auth_user_profile'));
+    const userLogin: string = localStorage.getItem('auth_user_login');
+    this.userDetailService.newUserInfo(userLogin);
   }
 }

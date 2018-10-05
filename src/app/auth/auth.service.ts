@@ -51,7 +51,7 @@ export class AuthService {
         this.isAuth = true;
         this.userDetails = responce.additionalUserInfo.username;
         this.router.navigate(['user-search']);
-        localStorage.setItem('auth_user_profile', JSON.stringify((<any> responce).additionalUserInfo.profile));
+        localStorage.setItem('auth_user_login', JSON.stringify((<any> responce).additionalUserInfo.profile.login));
       })
       .catch((err) => console.log(err));
 
