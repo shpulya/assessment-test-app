@@ -16,16 +16,11 @@ interface ResponseSearchApiInterface {
 
 @Injectable()
 export class UserSearchService {
-  searchInfoResult: any;
-  responseSearchUsers: Response[];
-  dataSource = new MatTableDataSource<Response>();
-
   constructor(private http: HttpClient) {
   }
 
   getSearchUsers(InputDataSearch: string): Observable<User[]> {
     const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
-    console.log(url);
     return this.http.get<User[]>(url).pipe(map(data => {
       const usersList = data['items'];
       return usersList.map(function (user: any) {
@@ -36,23 +31,6 @@ export class UserSearchService {
 
   getSearchUsersAllData(InputDataSearch: string): Observable<Response> {
     const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
-    console.log(url);
-    return this.http.get<Response> (url);
+    return this.http.get<Response>(url);
   }
-      // return this.http.get<User[]>(this.serviceUrl);
-      //  .subscribe(response => {
-      //     this.searchInfoResult = response;
-      //     this.responseSearchUsers = this.searchInfoResult.items;
-      //     this.dataSource.data = this.responseSearchUsers.map(item => new User(item)) ;
-      //     return this.dataSource.data;
-      //     // this.dataSource.data = _.map(this.searchInfoResult.items, _.partialRight(_.pick, ['login', 'url']));
-      //   },
-      //   error => {
-      //      console.log(error);
-      //   });
-
-    // getUsers(InputDataSearch: string): Observable<Response> {
-    //   const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
-    //   return this.http.get<Response>(url);//.map(res => res.json()).items;
-    // }
-  }
+}

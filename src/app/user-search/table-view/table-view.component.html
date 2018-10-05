@@ -1,4 +1,5 @@
-<section class="pt" fxLayout fxLayoutAlign="center">
+<div class="p"><u>{{usersCount >30?30:usersCount}} of {{usersCount}}</u></div>
+<div fxLayout fxLayoutAlign="center">
   <table fxFlex="100%" mat-table [dataSource]="dataSourceItems" class="mat-elevation-z8">
     <ng-container matColumnDef="login">
       <th mat-header-cell *matHeaderCellDef> Login</th>
@@ -14,4 +15,5 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</section>
+</div>
+

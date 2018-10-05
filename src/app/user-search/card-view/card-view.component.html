@@ -1,5 +1,5 @@
-
-<section class="container pt" fxLayout="row wrap" fxLayout.xs="column wrap"  fxLayoutGap.gt-md="1%" fxLayoutAlign="center">
+<div class="p"><u>{{usersCount >30?30:usersCount}} of {{usersCount}}</u></div>
+<div class="container" fxLayout="row wrap" fxLayout.xs="column wrap"  fxLayoutGap.gt-md="1%" fxLayoutAlign="center">
   <mat-card class="card-view" *ngFor="let userInfo of dataSourceCardView " fxLayoutAlign="space-between center"
             fxFlex="23%" fxFlex.xs="90%">
     <mat-card-content>
@@ -9,4 +9,4 @@
       </mat-list>
     </mat-card-content>
   </mat-card>
-</section>
+</div>

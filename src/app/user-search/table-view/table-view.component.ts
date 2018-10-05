@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, ErrorHandler, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {Component, OnInit, Input} from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
 import {Item} from '../user-search.model';
 import 'rxjs/add/observable/of';
 import {UserDetailService} from '../../user-detail/user-detail.service';
@@ -12,7 +12,7 @@ import {UserDetailService} from '../../user-detail/user-detail.service';
 export class TableViewComponent implements OnInit {
   displayedColumns: string[] = ['login', 'url'];
   @Input() dataSourceItems = new MatTableDataSource<Item>();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @Input() usersCount: any;
 
   constructor(private userDetailService: UserDetailService) {
   }

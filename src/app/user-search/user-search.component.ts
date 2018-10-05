@@ -14,7 +14,7 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class UserSearchComponent implements OnInit {
   dataSourceItems = new MatTableDataSource<Item>();
-  responseSearchUsers: any;
+  usersCount: any;
   dataSourceCardView: Item[]; // = new MatTableDataSource<User>();
   showTabs: boolean;
 
@@ -28,7 +28,7 @@ export class UserSearchComponent implements OnInit {
     .subscribe(
         res => {
           this.showTabs = true;
-          this.responseSearchUsers = res;
+          this.usersCount = res.total_count;
           this.dataSourceCardView = res.items;
           this.dataSourceItems.data = res.items;
         },

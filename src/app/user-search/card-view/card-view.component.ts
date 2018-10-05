@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { User, Response, Item } from '../user-search.model';
+import {Component, OnInit, Input} from '@angular/core';
+import {Item} from '../user-search.model';
 import 'rxjs/add/observable/of';
 import {UserDetailService} from '../../user-detail/user-detail.service';
 
@@ -10,6 +10,7 @@ import {UserDetailService} from '../../user-detail/user-detail.service';
 })
 export class CardViewComponent implements OnInit {
   @Input() dataSourceCardView: Item[];
+  @Input() usersCount: any;
 
   constructor(private userDetailService: UserDetailService) {
   }
