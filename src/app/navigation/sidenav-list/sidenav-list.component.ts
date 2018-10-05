@@ -1,6 +1,7 @@
 import {Component, OnInit, EventEmitter, Output, OnDestroy} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 import {AuthService} from '../../auth/auth.service';
+import {UserDetailService} from '../../user-detail/user-detail.service';
 
 @Component({
   selector: 'app-sidenav-list',
@@ -13,7 +14,7 @@ export class SidenavListComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
   userInfo: any;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private userDetailService: UserDetailService) {
   }
 
   ngOnInit() {
@@ -36,4 +37,7 @@ export class SidenavListComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
+  setUserInfo() {
+    this.userDetailService.newUserInfo(localStorage.getItem('auth_user_profile'));
+  }
 }

@@ -1,10 +1,12 @@
-<mat-card class="card-view" *ngFor="let user of dataSourceCardView " fxLayoutAlign="space-between center">
-  <div>
-    <a routerLink="/user-detail">
-      <div class="avatar" [ngStyle]="{'background-image': 'url('+ user.avatar_url +')' }"></div>
-    </a>
-    <span>{{user.login}}</span>
-  </div>
-  <a href=user.html_url>{{user.html_url}}</a>
-</mat-card>
 
+<section class="container pt" fxLayout="row wrap" fxLayout.xs="column wrap"  fxLayoutGap.gt-md="1%" fxLayoutAlign="center">
+  <mat-card class="card-view" *ngFor="let userInfo of dataSourceCardView " fxLayoutAlign="space-between center"
+            fxFlex="23%" fxFlex.xs="90%">
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item hintLabel="redirect to detail page"><a routerLink="/user-detail" (click)="setNewUserInfo(userInfo)">{{userInfo.login}}</a></mat-list-item>
+        <mat-list-item><a class="card-link" href="{{userInfo.html_url}}">{{userInfo.html_url}}</a></mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>

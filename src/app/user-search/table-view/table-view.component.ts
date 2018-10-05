@@ -2,6 +2,7 @@ import {Component, OnInit, Input, ErrorHandler, ViewChild} from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import {Item} from '../user-search.model';
 import 'rxjs/add/observable/of';
+import {UserDetailService} from '../../user-detail/user-detail.service';
 
 @Component({
   selector: 'app-table-view',
@@ -13,9 +14,13 @@ export class TableViewComponent implements OnInit {
   @Input() dataSourceItems = new MatTableDataSource<Item>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {
+  constructor(private userDetailService: UserDetailService) {
   }
 
   ngOnInit() {
+  }
+
+  setNewUserInfo(userInfo) {
+    this.userDetailService.newUserInfo(JSON.stringify(userInfo));
   }
 }

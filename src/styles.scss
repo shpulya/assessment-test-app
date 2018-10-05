@@ -9,3 +9,16 @@ body {
   margin: 0;
 }
 
+.pt {
+  padding-top: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: grey;
+  :hover,
+  :active {
+    color: lightgray;
+  }
+}
+

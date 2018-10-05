@@ -2,6 +2,7 @@ import {Component, OnInit, EventEmitter, Output, OnDestroy} from '@angular/core'
 import {Subscription} from 'rxjs/Subscription';
 
 import {AuthService} from '../../auth/auth.service';
+import {UserDetailService} from '../../user-detail/user-detail.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
   userInfo: any;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private userDetailService: UserDetailService) {
 
   }
 
@@ -35,6 +36,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
+  }
+
+  setUserInfo() {
+    this.userDetailService.newUserInfo(localStorage.getItem('auth_user_profile'));
   }
 
 }

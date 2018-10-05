@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { User, Response, Item } from '../user-search.model';
-import { UserSearchService } from '../user-search.service';
-import {UserDataSource} from '../user-data-source';
 import 'rxjs/add/observable/of';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {UserDetailService} from '../../user-detail/user-detail.service';
 
 @Component({
   selector: 'app-card-view',
@@ -14,11 +11,14 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 export class CardViewComponent implements OnInit {
   @Input() dataSourceCardView: Item[];
 
-  constructor(private userSearchService: UserSearchService) {
-
+  constructor(private userDetailService: UserDetailService) {
   }
 
   ngOnInit() {
+  }
+
+  setNewUserInfo(userInfo) {
+    this.userDetailService.newUserInfo(JSON.stringify(userInfo));
   }
 
 }

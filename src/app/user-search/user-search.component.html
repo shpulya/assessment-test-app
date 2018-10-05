@@ -1,3 +1,4 @@
+<section class="pt">
 <mat-toolbar class="user-search-toolbar">
   <form #f=ngForm (ngSubmit)="onSearchUsers(f)" novalidate>
     <mat-form-field>
@@ -20,7 +21,8 @@
     <ng-template mat-tab-label>
       <mat-icon class="tab-icon">view_module</mat-icon>
     </ng-template>
-    <app-card-view [dataSourceCardView]="dataSourceCardView" ></app-card-view>
+    <app-card-view [dataSourceCardView]="dataSourceCardView"></app-card-view>
   </mat-tab>
 </mat-tab-group>
 
+</section>

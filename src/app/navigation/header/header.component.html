@@ -11,7 +11,7 @@
         <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
         <li *ngIf="isAuth"><a routerLink="/user-search">Search</a></li>
         <li *ngIf="isAuth"><a (click)="onLogout()">Logout</a></li>
-        <li *ngIf="isAuth"><a routerLink="/user-detail">Profile</a></li>
+        <li *ngIf="isAuth"><a routerLink="/user-detail" (click)="setUserInfo()">Profile</a></li>
       </ul>
     </div>
   </mat-toolbar>

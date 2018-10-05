@@ -26,6 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserSearchService } from './user-search/user-search.service';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import {UserDetailService} from './user-detail/user-detail.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuardService, UserSearchService],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    UserSearchService,
+    UserDetailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
