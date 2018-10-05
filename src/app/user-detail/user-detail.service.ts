@@ -19,7 +19,7 @@ export class UserDetailService {
   }
 
   newUserInfo(login) {
-    this.userSearchService.getUserByName(login).subscribe(userInfo => {
+    this.userSearchService.getUserByName(login.replace(/['"]+/g, '')).subscribe(userInfo => {
       this.userInfo = userInfo;
       this.changeUserInfo(JSON.stringify(this.userInfo));
       console.log(this.userInfo);
