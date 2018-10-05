@@ -18,8 +18,8 @@ export class CardViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  setNewUserInfo(userInfo) {
-    this.userDetailService.newUserInfo(JSON.stringify(userInfo));
+  setNewUserInfo(login) {
+    this.userDetailService.newUserInfo(login);
   }
 
 }

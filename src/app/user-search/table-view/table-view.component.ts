@@ -20,7 +20,7 @@ export class TableViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  setNewUserInfo(userInfo) {
-    this.userDetailService.newUserInfo(JSON.stringify(userInfo));
+  setNewUserInfo(login) {
+    this.userDetailService.newUserInfo(login);
   }
 }

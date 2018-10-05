@@ -2,11 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {UserSearchService} from './user-search.service';
 import {MatTableDataSource} from '@angular/material';
 import {Item, Response} from './user-search.model';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/debounceTime';
 
-// @ts-ignore
 @Component({
   selector: 'app-user-search',
   templateUrl: './user-search.component.html',
@@ -15,7 +11,7 @@ import 'rxjs/add/operator/debounceTime';
 export class UserSearchComponent implements OnInit {
   dataSourceItems = new MatTableDataSource<Item>();
   usersCount: any;
-  dataSourceCardView: Item[]; // = new MatTableDataSource<User>();
+  dataSourceCardView: Item[];
   showTabs: boolean;
 
   constructor(private userSearchService: UserSearchService) {

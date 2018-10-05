@@ -1,20 +1,29 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {UserSearchService} from '../user-search/user-search.service';
+import {User} from '../user-search/user-search.model';
+
 
 @Injectable()
 export class UserDetailService {
+  userInfo: any;
 
   private userInfoSource = new BehaviorSubject(localStorage.getItem('auth_user_profile'));
   currentUserInfo = this.userInfoSource.asObservable();
 
-  constructor() { }
+  constructor(private userSearchService: UserSearchService) {
+  }
 
   changeUserInfo(userInfo: string) {
     this.userInfoSource.next(userInfo);
   }
 
-  newUserInfo(userInfo) {
-    this.changeUserInfo(userInfo);
+  newUserInfo(login) {
+    this.userSearchService.getUserByName(login).subscribe(userInfo => {
+      this.userInfo = userInfo;
+      this.changeUserInfo(JSON.stringify(this.userInfo));
+      console.log(this.userInfo);
+    });
   }
 
 }

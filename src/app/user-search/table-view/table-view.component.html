@@ -4,7 +4,7 @@
     <ng-container matColumnDef="login">
       <th mat-header-cell *matHeaderCellDef> Login</th>
       <td mat-cell *matCellDef="let userInfo"><a
-        routerLink="/user-detail" (click)="setNewUserInfo(userInfo)">{{userInfo.login}}</a></td>
+        routerLink="/user-detail" (click)="setNewUserInfo(userInfo.login)">{{userInfo.login}}</a></td>
     </ng-container>
 
     <ng-container matColumnDef="url">

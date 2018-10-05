@@ -19,18 +19,14 @@ export class UserSearchService {
   constructor(private http: HttpClient) {
   }
 
-  getSearchUsers(InputDataSearch: string): Observable<User[]> {
-    const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
-    return this.http.get<User[]>(url).pipe(map(data => {
-      const usersList = data['items'];
-      return usersList.map(function (user: any) {
-        return {login: user.login, url: user.url};
-      });
-    }));
+
+  getSearchUsersAllData(inputDataSearch: string): Observable<Response> {
+    const url = 'https://api.github.com/search/users?q=' + inputDataSearch;
+    return this.http.get<Response>(url);
   }
 
-  getSearchUsersAllData(InputDataSearch: string): Observable<Response> {
-    const url = 'https://api.github.com/search/users?q=' + InputDataSearch;
-    return this.http.get<Response>(url);
+  getUserByName(name: string): Observable<User> {
+    const url = 'https://api.github.com/users/' + name;
+    return this.http.get<User>(url);
   }
 }

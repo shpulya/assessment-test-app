@@ -4,7 +4,7 @@
             fxFlex="23%" fxFlex.xs="90%">
     <mat-card-content>
       <mat-list>
-        <mat-list-item hintLabel="redirect to detail page"><a routerLink="/user-detail" (click)="setNewUserInfo(userInfo)">{{userInfo.login}}</a></mat-list-item>
+        <mat-list-item hintLabel="redirect to detail page"><a routerLink="/user-detail" (click)="setNewUserInfo(userInfo.login)">{{userInfo.login}}</a></mat-list-item>
         <mat-list-item><a class="card-link" href="{{userInfo.html_url}}">{{userInfo.html_url}}</a></mat-list-item>
       </mat-list>
     </mat-card-content>
