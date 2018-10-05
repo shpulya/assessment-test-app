@@ -12,9 +12,7 @@ export class UserDetailComponent implements OnInit {
   constructor(private userDetailService: UserDetailService) { }
 
   ngOnInit() {
-    //this.userInfo = JSON.parse(localStorage.getItem('auth_user_profile'));
     this.userDetailService.currentUserInfo.subscribe(userInfo => this.userInfo = JSON.parse(userInfo));
-    console.log(this.userInfo);
   }
 
 }

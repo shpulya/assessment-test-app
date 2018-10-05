@@ -29,7 +29,7 @@ export class AuthService {
         this.isAuth = true;
         this.userDetails = user;
         this.authChange.next(true);
-        this.router.navigate(['/user-detail'])
+        this.router.navigate(['/user-search'])
       } else {
         this.authChange.next(false);
         this.userDetails = null;
